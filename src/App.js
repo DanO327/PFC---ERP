@@ -5,8 +5,10 @@ import Register from "./signUp";
 import Login from "./signIn";
 import Landing from "./Landing";
 import Inicio from "./inicio/Inicio";
+
 import Productos from "./productos/Productos";
 import Proveedores from "./proveedores/Proveedores";
+import Pedidos from "./pedidos/Pedidos";
 
 function AppContent() {
   const location = useLocation();
@@ -30,7 +32,7 @@ function AppContent() {
           <Route path="/inicio" element={<Inicio />} />
           <Route path="/productos" element={<Productos />} />
           <Route path="/contabilidad" element={<div>Contabilidad</div>} />
-          <Route path="/pedidos" element={<div>Pedidos</div>} />
+          <Route path="/pedidos" element={<Pedidos />} />
           <Route path="/proveedores" element={<Proveedores />} />
           <Route path="/albaranes" element={<div>Albaranes</div>} />
           <Route path="/facturas" element={<div>Facturas</div>} />
