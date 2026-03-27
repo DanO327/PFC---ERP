@@ -6,7 +6,26 @@ export default function Pedidos() {
   const [proveedores, setProveedores] = useState([]);
   const [productos, setProductos] = useState([]);
   const [idProveedor, setIdProveedor] = useState("");
-  // ...existing code...
+  // Mostrar/ocultar formulario de pedido
+  const [showForm, setShowForm] = useState(false);
+  // Lista de pedidos existentes
+  const [pedidos, setPedidos] = useState([]);
+  const [cargandoPedidos, setCargandoPedidos] = useState(false);
+  // Obtener pedidos del usuario
+  useEffect(() => {
+    if (!userId) return;
+    setCargandoPedidos(true);
+    const fetchPedidos = async () => {
+      const { data, error } = await supabase
+        .from('pedidos')
+        .select('id, id_proveedor, total, created_at')
+        .eq('user_id', userId)
+        .order('created_at', { ascending: false });
+      if (!error && data) setPedidos(data);
+      setCargandoPedidos(false);
+    };
+    fetchPedidos();
+  }, [userId, showForm]);
 
   // Calcular el total de los precios de coste de los productos añadidos
   const calcularTotalCoste = () => {
@@ -25,7 +44,6 @@ export default function Pedidos() {
   const [productosProveedor, setProductosProveedor] = useState([]);
   const [lineasPedido, setLineasPedido] = useState([]); // [{id_producto, nombre_producto, cantidad}]
   const [mensaje, setMensaje] = useState("");
-  const [showForm, setShowForm] = useState(false);
   // Modales para crear proveedor/producto
   const [showProveedorModal, setShowProveedorModal] = useState(false);
   // Campos para proveedor
@@ -126,7 +144,7 @@ export default function Pedidos() {
       };
     });
 
-    // 1. Insertar pedido
+    //Insertar pedido
     const { data: pedidoData, error: pedidoError } = await supabase
       .from('pedidos')
       .insert([
@@ -145,7 +163,7 @@ export default function Pedidos() {
 
     const pedidoId = pedidoData[0].id;
 
-    // 2. Insertar líneas de pedido
+    //Insertar líneas de pedido
     const lineasConPedido = lineas.map(l => ({ ...l, id_pedido: pedidoId }));
     const { error: lineasError } = await supabase
       .from('lineas_pedido')
@@ -184,6 +202,39 @@ export default function Pedidos() {
       >
         {showForm ? "✕" : "+"}
       </button>
+      {/* Lista de pedidos existentes */}
+      <div style={{ marginBottom: '2rem' }}>
+        <h3>Pedidos existentes</h3>
+        {cargandoPedidos ? (
+          <p>Cargando pedidos...</p>
+        ) : pedidos.length === 0 ? (
+          <p>No hay pedidos registrados.</p>
+        ) : (
+          <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: 16 }}>
+            <thead>
+              <tr style={{ background: '#f3f4f6' }}>
+                <th style={{ padding: 8, border: '1px solid #e5e7eb' }}>ID</th>
+                <th style={{ padding: 8, border: '1px solid #e5e7eb' }}>Proveedor</th>
+                <th style={{ padding: 8, border: '1px solid #e5e7eb' }}>Total</th>
+                <th style={{ padding: 8, border: '1px solid #e5e7eb' }}>Fecha</th>
+              </tr>
+            </thead>
+            <tbody>
+              {pedidos.map(p => {
+                const proveedor = proveedores.find(pr => pr.id === p.id_proveedor) || {};
+                return (
+                  <tr key={p.id}>
+                    <td style={{ padding: 8, border: '1px solid #e5e7eb', textAlign: 'center' }}>{p.id}</td>
+                    <td style={{ padding: 8, border: '1px solid #e5e7eb' }}>{proveedor.nombre_comercial || p.id_proveedor}</td>
+                    <td style={{ padding: 8, border: '1px solid #e5e7eb', textAlign: 'right' }}>{Number(p.total).toLocaleString('es-ES', { style: 'currency', currency: 'EUR' })}</td>
+                    <td style={{ padding: 8, border: '1px solid #e5e7eb', textAlign: 'center' }}>{new Date(p.created_at).toLocaleString('es-ES')}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        )}
+      </div>
       {showForm && (
         <div style={{
           position: 'fixed',
@@ -348,6 +399,7 @@ export default function Pedidos() {
                 </div>
               </div>
             )}
+            {/* Modal para crear producto */}
             {showProductoModal.show && (
               <div style={{
                 position: 'fixed',
