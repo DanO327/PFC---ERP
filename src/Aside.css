@@ -1,0 +1,45 @@
+.app-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+}
+
+.app-layout.auth-bg {
+  min-height: 100vh;
+}
+
+.aside-menu {
+  background: #23272f;
+  color: #fff;
+  padding: 0;
+  min-height: 100vh;
+}
+
+.aside-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.aside-menu li {
+  padding: 1rem;
+  border-bottom: 1px solid #333;
+}
+
+.aside-menu a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+}
+
+.aside-menu a:hover {
+  background: #444;
+}
+
+.main-content {
+  padding: 2rem;
+  background: none;
+}
+
+.app-layout.full {
+  grid-template-columns: 1fr;
+}

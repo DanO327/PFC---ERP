@@ -1,24 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import Aside from "./Aside";
+import "./Aside.css";
+import Register from "./signUp";
+import Login from "./signIn";
+import Landing from "./Landing";
+import Inicio from "./inicio/Inicio";
+import Productos from "./productos/Productos";
+import Proveedores from "./proveedores/Proveedores";
+
+function AppContent() {
+  const location = useLocation();
+  const hideAside = ["/", "/signUp", "/signIn"].includes(location.pathname);
+  const isAuthPage = ["/signUp", "/signIn"].includes(location.pathname);
+
+  const gradientBg = {
+    minHeight: "100vh",
+    background: "linear-gradient(120deg, #6366f1 0%, #38bdf8 50%, #f472b6 100%)",
+    paddingTop: "4rem",
+    paddingBottom: "4rem"
+  };
+
+  return (
+    <div className={`app-layout${hideAside ? " full" : ""}${isAuthPage ? " auth-bg" : ""}`}
+         style={isAuthPage ? gradientBg : {}}>
+      {!hideAside && <Aside />}
+      <main className="main-content">
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/inicio" element={<Inicio />} />
+          <Route path="/productos" element={<Productos />} />
+          <Route path="/contabilidad" element={<div>Contabilidad</div>} />
+          <Route path="/pedidos" element={<div>Pedidos</div>} />
+          <Route path="/proveedores" element={<Proveedores />} />
+          <Route path="/albaranes" element={<div>Albaranes</div>} />
+          <Route path="/facturas" element={<div>Facturas</div>} />
+          <Route path="/signUp" element={<Register />} />
+          <Route path="/signIn" element={<Login />} />
+        </Routes>
+      </main>
+    </div>
+  );
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <AppContent />
+    </Router>
   );
 }
 

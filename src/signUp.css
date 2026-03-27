@@ -1,0 +1,98 @@
+.register-form {
+  max-width: 420px;
+  margin: 1rem auto 1rem auto;
+  justify-content: center;
+  padding: 2.5rem 2rem 2rem 2rem;
+  background: linear-gradient(135deg, #d75d5dcc 60%, #457995cc 100%);
+  backdrop-filter: blur(2px);
+  border-radius: 14px;
+  box-shadow: 0 4px 24px #0002;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.register-form h2 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.register-form .field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.register-form label {
+  font-weight: 500;
+  margin-bottom: 0.1rem;
+}
+
+.register-form input[type="text"],
+.register-form input[type="email"],
+.register-form input[type="password"] {
+  padding: 0.7rem 1rem;
+  border: 1.5px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #f7fafd;
+  transition: border 0.2s;
+}
+.register-form input:focus {
+  border: 1.5px solid #61dafb;
+  outline: none;
+  background: #fff;
+}
+
+.register-form .requirements {
+  font-size: 0.93rem;
+  color: #555;
+  margin-bottom: 0.2rem;
+  margin-top: -0.3rem;
+}
+
+.register-form .terms {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.97rem;
+  margin-top: -0.5rem;
+}
+.register-form input[type="checkbox"] {
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: #23272f;
+}
+
+.register-form button {
+  padding: 0.85rem;
+  background: linear-gradient(90deg, #23272f 60%, #61dafb 100%);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px #0001;
+  margin-top: 0.5rem;
+}
+.register-form button:hover {
+  background: linear-gradient(90deg, #23272f 40%, #61dafb 100%);
+  box-shadow: 0 4px 16px #0002;
+}
+
+.register-form .message {
+  text-align: center;
+  color: #007b00;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+.register-form .error {
+  color: #c00;
+  font-size: 1rem;
+  margin-top: 0.2rem;
+  text-align: left;
+}
