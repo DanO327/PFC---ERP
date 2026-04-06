@@ -1,43 +1,123 @@
-.app-layout {
-  display: grid;
-  grid-template-columns: 220px 1fr;
-}
-
-.app-layout.auth-bg {
-  min-height: 100vh;
-}
-
-.aside-menu {
-  background: #23272f;
-  color: #fff;
-  padding: 0;
-  min-height: 100vh;
-}
-
 .aside-menu ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-
-.aside-menu li {
-  padding: 1rem;
-  border-bottom: 1px solid #333;
+.aside-logout {
+  padding-bottom: 1.5rem;
 }
+
+.app-layout {
+  display: flex;
+}
+
+.app-layout.auth-bg {
+}
+
+.aside-menu {
+  background: linear-gradient(90deg, #1f4956 0%, #032935 100%);
+  color: #fff;
+  padding: 0;
+  min-height: 100vh;
+}
+
+.aside-menu {
+  background: linear-gradient(90deg, #1f4956 0%, #032935 100%);
+  color: #fff;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 4.5rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100vh;
+  z-index: 1000;
+}
+
 
 .aside-menu a {
   color: #fff;
   text-decoration: none;
   display: block;
+  width: 100%;
+  text-align: left;
+  font-size: 1.18rem;
+  font-weight: 500;
+  padding: 1.5rem 1.2rem;
+  box-sizing: border-box;
+  border-radius: 6px;
+  transition: background 0.15s;
+  line-height: 1.2;
+  overflow: hidden;
+}
+
+.logout-btn {
+  appearance: none ;
+  -webkit-appearance: none ;
+   background:linear-gradient(90deg,#da535383 0%, #e4282881 100%);
+  color: #fff ;
+  border: none ;
+  padding: 1.5rem 1.2rem ;
+  border-radius: 6px ;
+  font-size: 1.18rem ;
+  font-weight: 500 ;
+  cursor: pointer ;
+  width: 100% ;
+  text-align: left ;
+  transition: background 0.15s, color 0.15s ;
+  box-sizing: border-box ;
+  outline: none ;
+  display: block ;
+  margin: 0 ;
+}
+.logout-btn span {
+  display: inline-block;
+  transition: transform 0.15s, color 0.15s;
+}
+.logout-btn:hover {
+  background:#ff323279 ;
+}
+.logout-btn:hover span {
+  transform: scale(1.1);
+  color: #ffbdbd;
 }
 
 .aside-menu a:hover {
-  background: #444;
+  background: linear-gradient(90deg,#195f72 0%, #277489 100%);
+  color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(99,102,241,0.10);
+  /* Escalar solo el texto, no la caja */
+}
+.aside-menu a span {
+  display: inline-block;
+  transition: transform 0.15s;
+}
+ .aside-menu a:hover span {
+  transform: scale(1.1);
+  color: #b3d1ff;
+  transition: color 0.15s, transform 0.15s;
 }
 
 .main-content {
+  margin-left: 220px;
   padding: 2rem;
+  background: #011920;
+  padding-top: 4.5rem;
+  width: calc(100vw - 220px);
+  min-width: 0;
+  min-height: 100vh;
+  box-sizing: border-box;
+  color: #82c6d8;
+}
+
+.full .main-content {
   background: none;
+  margin-left: 0;
+  width: 100vw;
 }
 
 .app-layout.full {

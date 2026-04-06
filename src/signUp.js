@@ -61,7 +61,7 @@ export default function Register() {
   };
 
   return (
-    <>
+    <div className="center-page">
       <form className="register-form" onSubmit={handleRegister}>
         <h2>Crear cuenta</h2>
         <div className="field">
@@ -139,12 +139,12 @@ export default function Register() {
         <button type="submit">Registrarse</button>
         {message && <div className="message">{message}</div>}
         {error && <div className="error">{error}</div>}
+        <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
+          <a href="/signIn" style={{ color: '#23272f', fontWeight: 500, textDecoration: 'underline', cursor: 'pointer' }}>
+            ¿Ya tienes cuenta? Inicia sesión aquí
+          </a>
+        </div>
       </form>
-      <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
-        <a href="/signIn" style={{ color: '#23272f', fontWeight: 500, textDecoration: 'underline', cursor: 'pointer' }}>
-          ¿Ya tienes cuenta? Inicia sesión aquí
-        </a>
-      </div>
-    </>
+    </div>
   );
 }

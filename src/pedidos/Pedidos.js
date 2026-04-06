@@ -210,13 +210,13 @@ export default function Pedidos() {
         ) : pedidos.length === 0 ? (
           <p>No hay pedidos registrados.</p>
         ) : (
-          <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: 16 }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: 16, background: '#1f4956', color: '#b6e6f2' }}>
             <thead>
-              <tr style={{ background: '#f3f4f6' }}>
-                <th style={{ padding: 8, border: '1px solid #e5e7eb' }}>ID</th>
-                <th style={{ padding: 8, border: '1px solid #e5e7eb' }}>Proveedor</th>
-                <th style={{ padding: 8, border: '1px solid #e5e7eb' }}>Total</th>
-                <th style={{ padding: 8, border: '1px solid #e5e7eb' }}>Fecha</th>
+              <tr style={{ background: '#16323c' }}>
+                <th style={{ padding: 8, border: '1px solid #e5e7eb', color: '#b6e6f2' }}>ID</th>
+                <th style={{ padding: 8, border: '1px solid #e5e7eb', color: '#b6e6f2' }}>Proveedor</th>
+                <th style={{ padding: 8, border: '1px solid #e5e7eb', color: '#b6e6f2' }}>Total</th>
+                <th style={{ padding: 8, border: '1px solid #e5e7eb', color: '#b6e6f2' }}>Fecha</th>
               </tr>
             </thead>
             <tbody>
@@ -224,10 +224,10 @@ export default function Pedidos() {
                 const proveedor = proveedores.find(pr => pr.id === p.id_proveedor) || {};
                 return (
                   <tr key={p.id}>
-                    <td style={{ padding: 8, border: '1px solid #e5e7eb', textAlign: 'center' }}>{p.id}</td>
-                    <td style={{ padding: 8, border: '1px solid #e5e7eb' }}>{proveedor.nombre_comercial || p.id_proveedor}</td>
-                    <td style={{ padding: 8, border: '1px solid #e5e7eb', textAlign: 'right' }}>{Number(p.total).toLocaleString('es-ES', { style: 'currency', currency: 'EUR' })}</td>
-                    <td style={{ padding: 8, border: '1px solid #e5e7eb', textAlign: 'center' }}>{new Date(p.created_at).toLocaleString('es-ES')}</td>
+                    <td style={{ padding: 8, border: '1px solid #e5e7eb', textAlign: 'center', color: '#b6e6f2' }}>{p.id}</td>
+                    <td style={{ padding: 8, border: '1px solid #e5e7eb', color: '#b6e6f2' }}>{proveedor.nombre_comercial || p.id_proveedor}</td>
+                    <td style={{ padding: 8, border: '1px solid #e5e7eb', textAlign: 'right', color: '#b6e6f2' }}>{Number(p.total).toLocaleString('es-ES', { style: 'currency', currency: 'EUR' })}</td>
+                    <td style={{ padding: 8, border: '1px solid #e5e7eb', textAlign: 'center', color: '#b6e6f2' }}>{new Date(p.created_at).toLocaleString('es-ES')}</td>
                   </tr>
                 );
               })}
@@ -266,7 +266,7 @@ export default function Pedidos() {
                     setIdProveedor(e.target.value);
                     const prov = proveedores.find(p => p.id.toString() === e.target.value);
                     setNombreProveedor(prov ? prov.nombre_comercial : "");
-                    setLineasPedido([]); // reset productos al cambiar proveedor
+                    setLineasPedido([]);
                   }}
                   required
                 >
@@ -344,7 +344,7 @@ export default function Pedidos() {
                 justifyContent: 'center',
                 zIndex: 2000
               }}>
-                <div style={{ background: 'white', borderRadius: 8, padding: 24, minWidth: 240, maxWidth: 320, position: 'relative' }}>
+                <div style={{ background: 'white', borderRadius: 8, padding: 24, minWidth: 240, maxWidth: 320, position: 'relative', color: '#1a1a1a' }}>
                   <h4>Nuevo proveedor</h4>
                   <input
                     type="text"
@@ -413,7 +413,7 @@ export default function Pedidos() {
                 justifyContent: 'center',
                 zIndex: 2000
               }}>
-                <div style={{ background: 'white', borderRadius: 8, padding: 24, minWidth: 240, maxWidth: 320, position: 'relative' }}>
+                <div style={{ background: 'white', borderRadius: 8, padding: 24, minWidth: 240, maxWidth: 320, position: 'relative', color: '#1a1a1a' }}>
                   <h4>Nuevo producto</h4>
                   <input
                     type="text"

@@ -28,7 +28,7 @@ export default function Login() {
   };
 
   return (
-    <>
+    <div className="center-page">
       <form className="register-form" onSubmit={handleLogin}>
         <h2>Iniciar sesión</h2>
         <div className="field">
@@ -65,12 +65,12 @@ export default function Login() {
         <button type="submit">Iniciar sesión</button>
         {message && <div className="message">{message}</div>}
         {error && <div className="error">{error}</div>}
+        <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
+          <a href="/signUp" style={{ color: '#23272f', fontWeight: 500, textDecoration: 'underline', cursor: 'pointer' }}>
+            ¿Aún no tienes cuenta? Regístrate aquí
+          </a>
+        </div>
       </form>
-      <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
-        <a href="/signUp" style={{ color: '#23272f', fontWeight: 500, textDecoration: 'underline', cursor: 'pointer' }}>
-          ¿Aún no tienes cuenta? Regístrate aquí
-        </a>
-      </div>
-    </>
+    </div>
   );
 }
