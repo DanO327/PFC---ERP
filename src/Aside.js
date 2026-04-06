@@ -15,15 +15,25 @@ export default function Aside() {
     <aside className="aside-menu">
       <nav>
         <ul>
-          <li><Link to="/inicio">Inicio</Link></li>
-          <li><Link to="/productos">Productos</Link></li>
-          <li><Link to="/pedidos">Pedidos</Link></li>
-          <li><Link to="/proveedores">Proveedores</Link></li>
-          <li><Link to="/albaranes">Albaranes</Link></li>
-          <li><Link to="/facturas">Facturas</Link></li>
+          <li><Link to="/inicio"><span>Inicio</span></Link></li>
+          <li><Link to="/productos"><span>Productos</span></Link></li>
+          <li><Link to="/pedidos"><span>Pedidos</span></Link></li>
+          <li><Link to="/proveedores"><span>Proveedores</span></Link></li>
+          <li><Link to="/albaranes"><span>Albaranes</span></Link></li>
+          <li><Link to="/facturas"><span>Facturas</span></Link></li>
         </ul>
       </nav>
-      <button className="logout-btn" onClick={handleLogout} style={{marginTop: '2rem', width: '90%', marginLeft: '5%'}}>Cerrar sesión</button>
+      <div className="aside-logout">
+        <button className="logout-btn" onClick={handleLogout}>
+          <span style={{display: 'inline-flex', alignItems: 'center', gap: '0.7em'}}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign: 'middle'}}>
+              <path d="M12 2v10" />
+              <path d="M17.657 6.343a8 8 0 1 1-11.314 0" />
+            </svg>
+            Cerrar sesión
+          </span>
+        </button>
+      </div>
     </aside>
   );
 }
