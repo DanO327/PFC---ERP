@@ -9,6 +9,7 @@
 
 .app-layout {
   display: flex;
+  min-height: 100vh;
 }
 
 .app-layout.auth-bg {
@@ -35,6 +36,7 @@
   width: 220px;
   height: 100vh;
   z-index: 1000;
+  box-sizing: border-box;
 }
 
 
@@ -107,19 +109,71 @@
   padding: 2rem;
   background: #011920;
   padding-top: 4.5rem;
-  width: calc(100vw - 220px);
+  width: 100%;
+  flex: 1;
   min-width: 0;
   min-height: 100vh;
   box-sizing: border-box;
   color: #82c6d8;
+  overflow-x: hidden;
 }
 
 .full .main-content {
   background: none;
   margin-left: 0;
-  width: 100vw;
+  width: 100%;
 }
 
 .app-layout.full {
   grid-template-columns: 1fr;
+}
+
+@media (max-width: 900px) {
+  .app-layout {
+    flex-direction: column;
+  }
+
+  .aside-menu {
+    position: sticky;
+    top: 60px;
+    width: 100%;
+    min-height: auto;
+    height: auto;
+    padding-top: 0;
+  }
+
+  .aside-menu nav {
+    overflow-x: auto;
+  }
+
+  .aside-menu ul {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  .aside-menu li {
+    flex: 0 0 auto;
+  }
+
+  .aside-menu a,
+  .logout-btn {
+    padding: 1rem;
+    white-space: nowrap;
+  }
+
+  .aside-logout {
+    padding-bottom: 0;
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding: 1.25rem;
+    padding-top: 1.5rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .main-content {
+    padding: 1rem;
+  }
 }

@@ -236,30 +236,11 @@ export default function Pedidos() {
         )}
       </div>
       {showForm && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100vw',
-          height: '100vh',
-          background: 'rgba(0,0,0,0.3)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: 1000
-        }}>
-          <div style={{
-            background: 'white',
-            borderRadius: 8,
-            boxShadow: '0 2px 16px rgba(0,0,0,0.2)',
-            padding: 32,
-            minWidth: 320,
-            maxWidth: '90vw',
-            position: 'relative'
-          }}>
-            <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        <div className="app-modal-overlay" style={{ zIndex: 1000 }}>
+          <div className="app-modal-card">
+            <form className="app-modal-form" onSubmit={handleSubmit}>
               <h3 style={{marginTop:0}}>Nuevo pedido</h3>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <div className="app-modal-inline-row">
                 <select
                   value={idProveedor}
                   onChange={e => {
@@ -275,56 +256,46 @@ export default function Pedidos() {
                     <option key={p.id} value={p.id.toString()}>{p.nombre_comercial}</option>
                   ))}
                 </select>
-                <button type="button" onClick={() => setShowProveedorModal(true)} style={{ background: '#2563eb', color: 'white', border: 'none', borderRadius: 4, padding: '4px 8px', cursor: 'pointer' }}>Nuevo proveedor</button>
+                <button className="app-form-button secondary" type="button" onClick={() => setShowProveedorModal(true)}>Nuevo proveedor</button>
               </div>
               <div>
                 <h4>Productos</h4>
                 {lineasPedido.length > 0 && (
-                  <div style={{ marginBottom: 8, fontWeight: 'bold' }}>
+                  <div className="app-modal-total">
                     Total: {calcularTotalCoste().toLocaleString('es-ES', { style: 'currency', currency: 'EUR' })}
                   </div>
                 )}
                 {lineasPedido.map((linea, idx) => (
-                  <div key={idx} style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 8 }}>
+                  <div key={idx} className="app-modal-line-row">
                     <select
                       value={linea.id_producto}
                       onChange={e => handleLineaChange(idx, "id_producto", e.target.value)}
                       required
-                      style={{ minWidth: 180 }}
                     >
                       <option value="">Selecciona producto</option>
                       {productosProveedor.map(p => (
                         <option key={p.id} value={p.id.toString()}>{p.descripcion}</option>
                       ))}
                     </select>
-                    <button type="button" onClick={() => setShowProductoModal({ show: true, idx })} style={{ background: '#2563eb', color: 'white', border: 'none', borderRadius: 4, padding: '4px 8px', cursor: 'pointer' }}>Nuevo producto</button>
+                    <button className="app-form-button secondary" type="button" onClick={() => setShowProductoModal({ show: true, idx })}>Nuevo producto</button>
                     <input
                       type="number"
                       min={1}
                       value={linea.cantidad}
                       onChange={e => handleLineaChange(idx, "cantidad", e.target.value)}
-                      style={{ width: 60 }}
+                      style={{ minWidth: 96 }}
                       required
                     />
-                    <button type="button" onClick={() => handleRemoveLinea(idx)} style={{ color: '#f87171', border: 'none', background: 'none', fontSize: 20, cursor: 'pointer' }}>🗑️</button>
+                    <button className="app-form-button danger" type="button" onClick={() => handleRemoveLinea(idx)}>Quitar</button>
                   </div>
                 ))}
-                <button type="button" onClick={handleAddLinea} style={{ marginTop: 8, background: '#34d399', color: 'white', border: 'none', borderRadius: 4, padding: '4px 12px', cursor: 'pointer' }}>Añadir producto</button>
+                <button className="app-form-button secondary" type="button" onClick={handleAddLinea}>Añadir producto</button>
               </div>
               <button type="submit">Guardar pedido</button>
             </form>
             <button
+              className="app-modal-close"
               onClick={() => setShowForm(false)}
-              style={{
-                position: 'absolute',
-                top: 8,
-                right: 8,
-                background: 'transparent',
-                border: 'none',
-                fontSize: 24,
-                cursor: 'pointer',
-                color: '#888'
-              }}
               aria-label="Cerrar modal"
               title="Cerrar"
             >
@@ -332,19 +303,9 @@ export default function Pedidos() {
             </button>
             {/* Modal para crear proveedor */}
             {showProveedorModal && (
-              <div style={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                width: '100vw',
-                height: '100vh',
-                background: 'rgba(0,0,0,0.3)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                zIndex: 2000
-              }}>
-                <div style={{ background: 'white', borderRadius: 8, padding: 24, minWidth: 240, maxWidth: 320, position: 'relative', color: '#1a1a1a' }}>
+              <div className="app-modal-overlay" style={{ zIndex: 2000 }}>
+                <div className="app-modal-card compact">
+                  <div className="app-modal-form">
                   <h4>Nuevo proveedor</h4>
                   <input
                     type="text"
@@ -388,32 +349,23 @@ export default function Pedidos() {
                         setNuevoEmailProveedor("");
                       }
                     }}
-                    style={{ background: '#34d399', color: 'white', border: 'none', borderRadius: 4, padding: '4px 12px', marginRight: 8 }}
+                    className="app-form-button primary"
                   >Crear</button>
                   <button onClick={() => {
                     setShowProveedorModal(false);
                     setNuevoProveedor("");
                     setNuevoRazonSocial("");
                     setNuevoEmailProveedor("");
-                  }} style={{ background: '#f87171', color: 'white', border: 'none', borderRadius: 4, padding: '4px 12px' }}>Cancelar</button>
+                  }} className="app-form-button danger">Cancelar</button>
+                  </div>
                 </div>
               </div>
             )}
             {/* Modal para crear producto */}
             {showProductoModal.show && (
-              <div style={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                width: '100vw',
-                height: '100vh',
-                background: 'rgba(0,0,0,0.3)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                zIndex: 2000
-              }}>
-                <div style={{ background: 'white', borderRadius: 8, padding: 24, minWidth: 240, maxWidth: 320, position: 'relative', color: '#1a1a1a' }}>
+              <div className="app-modal-overlay" style={{ zIndex: 2000 }}>
+                <div className="app-modal-card compact">
+                  <div className="app-modal-form">
                   <h4>Nuevo producto</h4>
                   <input
                     type="text"
@@ -459,14 +411,15 @@ export default function Pedidos() {
                         setNuevoPvp("");
                       }
                     }}
-                    style={{ background: '#34d399', color: 'white', border: 'none', borderRadius: 4, padding: '4px 12px', marginRight: 8 }}
+                    className="app-form-button primary"
                   >Crear</button>
                   <button onClick={() => {
                     setShowProductoModal({ show: false, idx: null });
                     setNuevoProducto("");
                     setNuevoPrecioCoste("");
                     setNuevoPvp("");
-                  }} style={{ background: '#f87171', color: 'white', border: 'none', borderRadius: 4, padding: '4px 12px' }}>Cancelar</button>
+                  }} className="app-form-button danger">Cancelar</button>
+                  </div>
                 </div>
               </div>
             )}

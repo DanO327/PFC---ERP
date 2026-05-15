@@ -19,7 +19,6 @@ export default function Aside() {
           <li><Link to="/productos"><span>Productos</span></Link></li>
           <li><Link to="/pedidos"><span>Pedidos</span></Link></li>
           <li><Link to="/proveedores"><span>Proveedores</span></Link></li>
-          <li><Link to="/albaranes"><span>Albaranes</span></Link></li>
           <li><Link to="/facturas"><span>Facturas</span></Link></li>
         </ul>
       </nav>

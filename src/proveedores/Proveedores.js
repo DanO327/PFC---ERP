@@ -123,28 +123,9 @@ const Proveedores = () => {
         {showForm ? "✕" : "+"}
       </button>
       {showForm && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100vw',
-          height: '100vh',
-          background: 'rgba(0,0,0,0.3)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: 1000
-        }}>
-          <div style={{
-            background: 'white',
-            borderRadius: 8,
-            boxShadow: '0 2px 16px rgba(0,0,0,0.2)',
-            padding: 32,
-            minWidth: 320,
-            maxWidth: '90vw',
-            position: 'relative'
-          }}>
-            <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        <div className="app-modal-overlay" style={{ zIndex: 1000 }}>
+          <div className="app-modal-card">
+            <form className="app-modal-form" onSubmit={handleSubmit}>
               <h3 style={{marginTop:0}}>{editId ? 'Editar proveedor' : 'Crear proveedor'}</h3>
               <input
                 type="text"
@@ -169,17 +150,8 @@ const Proveedores = () => {
               <button type="submit">Guardar</button>
             </form>
             <button
+              className="app-modal-close"
               onClick={() => setShowForm(false)}
-              style={{
-                position: 'absolute',
-                top: 8,
-                right: 8,
-                background: 'transparent',
-                border: 'none',
-                fontSize: 24,
-                cursor: 'pointer',
-                color: '#888'
-              }}
               aria-label="Cerrar modal"
               title="Cerrar"
             >
