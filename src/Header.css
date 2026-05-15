@@ -82,3 +82,13 @@
 .logout {
   color: #ef4444;
 }
+
+@media (max-width: 900px) {
+  .header {
+    padding: 0.5rem 1rem;
+  }
+
+  .header-content {
+    padding-right: 0;
+  }
+}

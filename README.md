@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# ERP Web
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Aplicacion web de tipo ERP desarrollada con React y Supabase. El proyecto permite gestionar distintas areas basicas de una empresa desde una interfaz unica, incluyendo autenticacion de usuarios y modulos para proveedores, productos, pedidos y facturas.
 
-## Available Scripts
+## Descripcion general
 
-In the project directory, you can run:
+La aplicacion esta orientada a centralizar operaciones de gestion empresarial en un entorno web. El acceso se realiza mediante registro e inicio de sesion, y una vez autenticado el usuario puede navegar entre los diferentes modulos del sistema.
 
-### `npm start`
+Las principales funcionalidades implementadas actualmente son:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- registro de usuarios
+- inicio y cierre de sesion
+- gestion de proveedores
+- gestion de productos
+- gestion de pedidos
+- gestion de facturas
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Tecnologias utilizadas
 
-### `npm test`
+- React
+- React Router DOM
+- Supabase
+- React Icons
+- Create React App
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Requisitos previos
 
-### `npm run build`
+- Node.js
+- npm
+- acceso al proyecto en Supabase
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Instalacion
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clonar o descargar el proyecto.
+2. Acceder a la carpeta raiz del proyecto.
+3. Instalar las dependencias ejecutando `npm install`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+El proyecto utiliza un cliente de Supabase definido en el archivo `src/supabaseClient.js`.
 
-### `npm run eject`
+Para un entorno real, se recomienda configurar la URL del proyecto y la clave publica mediante variables de entorno, en lugar de dejarlas escritas directamente en el codigo.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Para iniciar la aplicacion en modo desarrollo ejecutar `npm start`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+La aplicacion quedara disponible normalmente en http://localhost:3000
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Para generar la version optimizada para produccion ejecutar `npm run build`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+`npm test` ejecuta el entorno de pruebas.

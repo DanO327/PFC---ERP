@@ -10,6 +10,7 @@ import Inicio from "./inicio/Inicio";
 import Productos from "./productos/Productos";
 import Proveedores from "./proveedores/Proveedores";
 import Pedidos from "./pedidos/Pedidos";
+import Facturas from "./facturas/Facturas";
 import Header from "./Header";
 import { supabase } from "./supabaseClient";
 import { useEffect, useState } from "react";
@@ -57,8 +58,7 @@ function AppContent() {
           <Route path="/contabilidad" element={<div>Contabilidad</div>} />
           <Route path="/pedidos" element={<Pedidos />} />
           <Route path="/proveedores" element={<Proveedores />} />
-          <Route path="/albaranes" element={<div>Albaranes</div>} />
-          <Route path="/facturas" element={<div>Facturas</div>} />
+          <Route path="/facturas" element={<Facturas />} />
           <Route path="/signUp" element={<Register />} />
           <Route path="/signIn" element={<Login />} />
         </Routes>
